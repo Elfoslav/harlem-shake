@@ -1,5 +1,6 @@
-+harlem-shake
-+============
-+
-+CSS3, jQuery plugin
-DOCS comming soon
+=======
+harlem-shake
+============
+
+CSS3, jQuery plugin
+DOCS comming soon...
