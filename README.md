@@ -1,4 +1,4 @@
-# harlem-shake - CSS3, jQuery plugin
+# harlem-shake -> CSS3, jQuery plugin
 
 ## Usage:
 
@@ -45,4 +45,24 @@ Data animation speed can be "slow" or "fast":
 `data-animation-speed="fast|slow"`
 
 Data animation has following options (most are taken from animate.css):
-`data-animation="rotate|rotateHalf|scale|jump|flash|shake|bounce|tada|swing|wobble|wiggle|pulse|flip|flipInX|flipOutX|flipInY|flipOutY|fadeIn"`
+
+- rotate
+- rotateHalf
+- scale
+- jump
+- flash
+- shake
+- bounce
+- tada
+- swing
+- wobble
+- wiggle
+- pulse
+- flip
+- flipInX
+- flipOutX
+- flipInY
+- flipOutY
+- fadeIn
+
+Live example on [http://hromnik.com/web/harlem-shake/example-page.html](http://hromnik.com/web/harlem-shake/example-page.html)
