@@ -1,20 +1,20 @@
 (function( $ ) {
+
+    var music;
+    var othersTimeouts = [];
+
     $.fn.harlemShake = function(options) {
 
         var that = this;
-        //14s timeout
         var timeout = 15800;
-        var endTime = timeout * 2 - 1000;
+        var pivotTimeout = 2100;
+        var endTime = 30000;
+        var beforeEndTime = 28800;
         var defaultAnimation = 'wobble';
-        var music;
 
         if(options == 'stop') {
-            beforeEnd(that);
-            setTimeout( function() {
-                end(that);
-                console.log(music);
-                stopMusic(music);
-            }, 1500);
+            stopMusic(music);
+            end(that);
         } else {
 
             music = startMusic();
@@ -24,75 +24,83 @@
                 var animSpeed = $(item).data('animation-speed');
                 var pivot = $(item).data('pivot');
 
-                setTimeout( function() {
-                    $(item).addClass('hs-animate');
-                }, 2000);
                 if(pivot) {
-                    animate(item, animation, animSpeed);
-                    setTimeout( function() {
-                    }, timeout);
+                    var tim = setTimeout( function() {
+                        $(item).addClass('hs-animate');
+                        animate(item, animation, animSpeed);
+                    }, pivotTimeout);
+                    othersTimeouts.push(tim);
                 } else {
-                    setTimeout( function() {
+                    var tim = setTimeout( function() {
+                        $(item).addClass('hs-animate');
                         animate(item, animation, animSpeed);
                     }, timeout);
+                    othersTimeouts.push(tim);
                 }
             });
-
-            setTimeout( function() {
-                beforeEnd(that);
-            }, endTime - 2000);
-
-            setTimeout( function() {
-                end(that);
-            }, endTime);
         }
 
-            function animate(item, animation, speed) {
-                if(speed) {
-                    $(item).addClass('hs-animate-'+speed);
-                }
-                if(animation) {
-                    $(item).addClass(animation);
-                } else {
-                    $(item).addClass(defaultAnimation);
-                }
-            }
+        var tim = setTimeout( function() {
+            end(that);
+        }, endTime);
+        othersTimeouts.push(tim);
 
-            function beforeEnd(items) {
-                $(items).each(function(i, item) {
-                    $(item).addClass('hs-animate-slow');
-                });
-            }
+        var tim = setTimeout( function() {
+            beforeEnd(that);
+        }, beforeEndTime);
+        othersTimeouts.push(tim);
 
-            function end(items) {
-                console.log(items);
-                $(items).each(function(i, item) {
-                    var animation = $(item).data('animation');
-                    var animSpeed = $(item).data('animation-speed');
-                    $(item).removeClass('hs-animate');
-                    if(animSpeed)
-                        $(item).removeClass('hs-animate-'+animSpeed);
-                    if(animation)
-                        $(item).removeClass(animation);
-                    $(item).removeClass(defaultAnimation);
-                    $(item).removeClass('hs-animate-slow');
-                    $(item).removeClass('hs-animate-fast');
-                });
+        function animate(item, animation, speed) {
+            if(speed) {
+                $(item).addClass('hs-animate-'+speed);
             }
+            if(animation) {
+                $(item).addClass(animation);
+            } else {
+                $(item).addClass(defaultAnimation);
+            }
+        }
 
-            function startMusic() {
-                a = new Audio('music/harlem-shake.mp3');
-                if(!a.play()) {
-                    a = new Audio('music/harlem-shake.ogg');
-                    a.play();
-                }
-                return a;
-            }
+        function beforeEnd(items) {
+            $(items).each(function(i, item) {
+                $(item).addClass('hs-animate-slow');
+            });
+        }
 
-            function stopMusic(music) {
-                if(music)
-                    music.pause();
+        function end(items) {
+            $(items).each(function(i, item) {
+                var animation = $(item).data('animation');
+                var animSpeed = $(item).data('animation-speed');
+                $(item).removeClass('hs-animate');
+                if(animSpeed)
+                    $(item).removeClass('hs-animate-'+animSpeed);
+                if(animation)
+                    $(item).removeClass(animation);
+                $(item).removeClass(defaultAnimation);
+                $(item).removeClass('hs-animate-slow');
+                $(item).removeClass('hs-animate-fast');
+            });
+            var timeoutsLength = othersTimeouts.length;
+            while(timeoutsLength--) {
+                var tim = othersTimeouts[timeoutsLength];
+                clearTimeout(tim);
+                othersTimeouts.splice(-1,1);
             }
+        }
+
+        function startMusic() {
+            a = new Audio('music/harlem-shake.mp3');
+            if(!a.play()) {
+                a = new Audio('music/harlem-shake.ogg');
+                a.play();
+            }
+            return a;
+        }
+
+        function stopMusic(music) {
+            if(music)
+                music.pause();
+        }
 
         return this;
     };
