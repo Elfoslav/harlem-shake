@@ -2,6 +2,7 @@
 
     var music;
     var othersTimeouts = [];
+    var stopped = false;
 
     $.fn.harlemShake = function(options) {
 
@@ -17,7 +18,9 @@
             end(that);
         } else {
 
-            music = startMusic();
+            if(!music || stopped) {
+                music = startMusic();
+            }
 
             this.each(function(i, item) {
                 var animation = $(item).data('animation');
@@ -86,6 +89,7 @@
                 clearTimeout(tim);
                 othersTimeouts.splice(-1,1);
             }
+            stopped = true;
         }
 
         function startMusic() {

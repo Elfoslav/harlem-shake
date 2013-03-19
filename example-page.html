@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="The power of CSS3 animations" />
+<link rel="stylesheet" type="text/css" href="css/jquery.harlem-shake-1.0.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.harlem-shake-1.0.js"></script>
+<title>jQuery Harlem Shake plugin</title>
+<style>
+    #container {
+        width: 960px;
+        margin: auto;
+    }
+    .left-sidebar, .right-sidebar {
+        width: 200px;
+        padding: 15px;
+    }
+    .left-sidebar {
+        float: left;
+        border-right: 1px solid;
+    }
+    .right-sidebar {
+        float: right;
+        border-left: 1px solid;
+    }
+    .harlem-shake {
+        width: 150px;
+        height: 100px;
+        background-color: #44f;
+        margin: 10px;
+        float: left;
+    }
+    .mid {
+        width: 450px;
+        float: left;
+        padding: 15px;
+    }
+    .clearfix {
+        clear: both;
+    }
+</style>
+<script>
+    $(function() {
+
+        $('.start').click(function() {
+            //just add elements you want to animate
+            $('.harlem-shake, .header1, .header2, .header').harlemShake();
+        });
+
+        $('.stop').click(function() {
+            $('.harlem-shake, .header1, .header2, .header').harlemShake('stop');
+        });
+    });
+</script>
+</head>
+<body>
+<div id="container">
+    <header class="header" data-animation="rotate">
+        <div class="harlem-shake" data-pivot="true" data-animation="rotateHalf">This can be your logo</div>
+        <div class="clearfix"></div>
+        <button class="start">Start total crazy Harlem shake!</button>
+        <button class="stop">Stop Harlem shake!</button>
+    </header>
+    <aside class="left-sidebar">
+        <h2 class="header2" data-animation="rotate">Left sidebar</h2>
+        <div class="harlem-shake" data-animation="rotate">
+            rotate
+        </div>
+        <div class="harlem-shake" data-animation="rotateHalf">
+            rotateHalf
+        </div>
+        <div class="harlem-shake" data-animation="scale">
+            scale
+        </div>
+        <div class="harlem-shake" data-animation="jump" data-animation-speed="fast">
+            jump
+        </div>
+        <div class="harlem-shake" data-animation="flash">
+            flash
+        </div>
+        <div class="harlem-shake" data-animation="shake">
+            shake
+        </div>
+        <div class="harlem-shake" data-animation="bounce">
+            bounce
+        </div>
+        <div class="harlem-shake" data-animation="tada">
+            tada
+        </div>
+        <div class="harlem-shake" data-animation="swing">
+            swing
+        </div>
+    </aside>
+    <div class="mid">
+        <h1 class="header1" data-animation="pulse">Some content</h1>
+        <div class="harlem-shake" data-animation="wobble">
+            wobble
+        </div>
+        <div class="harlem-shake" data-animation="wiggle">
+            wiggle
+        </div>
+        <div class="harlem-shake" data-animation="pulse">
+            pulse
+        </div>
+        <div class="harlem-shake" data-animation="flip">
+            flip
+        </div>
+        <div class="harlem-shake" data-animation="flipInX">
+            flipInX
+        </div>
+        <div class="harlem-shake" data-animation="flipOutX">
+            flipOutX
+        </div>
+        <div class="clearfix"></div>
+        <p>Created by <a href="http://hromnik.com">Elfoslav</a></p>
+        <p>Github:
+            <a href="https://github.com/Elfoslav/harlem-shake">
+                https://github.com/Elfoslav/harlem-shake
+            </a>
+        </p>
+    </div>
+    <aside class="right-sidebar">
+        <h2 class="header2" data-animation="rotateHalf">Right sidebar</h2>
+        <div class="harlem-shake" data-animation="flipInY">
+            flipInY
+        </div>
+        <div class="harlem-shake" data-animation="flipOutY">
+            flipOutY
+        </div>
+        <div class="harlem-shake" data-animation="fadeIn">
+            fadeIn
+        </div>
+        <div class="harlem-shake">
+            default
+        </div>
+    </aside>
+</div>
+</body>
+</html>
