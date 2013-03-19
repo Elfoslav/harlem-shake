@@ -89,11 +89,8 @@
         }
 
         function startMusic() {
-            a = new Audio('music/harlem-shake.mp3');
-            if(!a.play()) {
-                a = new Audio('music/harlem-shake.ogg');
-                a.play();
-            }
+            a = new Audio('music/harlem-shake.ogg');
+            a.play();
             return a;
         }
 
