@@ -12,7 +12,7 @@ First include CSS and scripts:
 	...
 	</head>
 
-Music (harlem-shake.ogg) must be in /js/music/harlem-shake.ogg if jquery.harlem-shake-1.0.js is in /js/jquery.harlem-shake-1.0.js
+Music (harlem-shake.ogg) must be in music/harlem-shake.ogg (in next version this will be configurable)
 
 jquery.harlem-shake-1.0.js searches for music/harlem-shake.ogg (relative path)
 
