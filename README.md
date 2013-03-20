@@ -35,11 +35,13 @@ Then you can trigger plugin on click or on page load, but I don't recommend on p
 
 You can set additional options in data attribute if you use HTML5:
 
-	<div class="harlem-shake-element" data-animation="flash" data-animation-speed="fast">
+	<div class="harlem-shake-element" data-pivot="true" data-animation="flash" data-animation-speed="fast">
 		flash
 	</div>
 
 In example above I used data animation "flash" and animation will be "fast".
+
+**Pivot (first dancer)**: You can set pivot with `data-pivot="true"`. Pivot should be only one and my recommendation is to use animation "rotateHalf".
 
 Data animation speed can be "slow" or "fast":
 `data-animation-speed="fast|slow"`
