@@ -4,6 +4,23 @@
     var othersTimeouts = [];
     var stopped = false;
 
+    function startMusic() {
+        a = new Audio('music/harlem-shake.ogg');
+        a.play();
+        return a;
+    }
+
+    function stopMusic(music) {
+        if(music) {
+            music.pause();
+            stopped = true;
+        }
+    }
+
+    //preload music
+    music = startMusic();
+    stopMusic(music);
+
     $.fn.harlemShake = function(options) {
 
         var that = this;
@@ -90,17 +107,6 @@
                 othersTimeouts.splice(-1,1);
             }
             stopped = true;
-        }
-
-        function startMusic() {
-            a = new Audio('music/harlem-shake.ogg');
-            a.play();
-            return a;
-        }
-
-        function stopMusic(music) {
-            if(music)
-                music.pause();
         }
 
         return this;
